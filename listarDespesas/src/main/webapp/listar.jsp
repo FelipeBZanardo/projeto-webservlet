@@ -1,6 +1,7 @@
 <%@ page import="persistence.DespesaRepository" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Despesa" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,7 +39,7 @@
     %>
       <tr>
         <td><%=despesa.getDescricao()%></td>
-        <td><%=despesa.getData()%></td>
+        <td><%=despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
         <td><%=despesa.getValor()%></td>
         <td><%=despesa.getCategoria()%></td>
         <td><a href="/listarDespesas_war_exploded/removerDespesa?id=<%=despesa.getId()%>">Remover</a></td>

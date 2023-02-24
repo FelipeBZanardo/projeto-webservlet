@@ -14,7 +14,6 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 
 @WebServlet(urlPatterns = "/cadastrarDespesa")
 public class CadastrarDespesa extends HttpServlet {

@@ -5,6 +5,7 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import persistence.DespesaRepository;
 
 import java.io.IOException;
 
@@ -12,9 +13,13 @@ import java.io.IOException;
 public class Controladora extends HttpServlet {
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        var cadastrar = req.getParameter("cadastrar");
-        var listar = req.getParameter("listar");
-        var voltar = req.getParameter("voltar");
+
+
+        String cadastrar = req.getParameter("cadastrar");
+        String listar = req.getParameter("listar");
+        String voltar = req.getParameter("voltar");
+
+        System.out.println(cadastrar);
 
         if (cadastrar != null)
             req.getRequestDispatcher("/cadastrar.jsp").forward(req, res);

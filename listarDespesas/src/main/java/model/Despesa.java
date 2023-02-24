@@ -5,10 +5,10 @@ import java.time.LocalDate;
 
 public class Despesa {
     private long id = 0L;
-    private String descricao;
-    private LocalDate data;
-    private BigDecimal valor;
-    private Categoria categoria;
+    private final String descricao;
+    private final LocalDate data;
+    private final BigDecimal valor;
+    private final Categoria categoria;
 
     public Despesa(long id, String descricao, LocalDate data, BigDecimal valor, Categoria categoria) {
         this.id = id;
