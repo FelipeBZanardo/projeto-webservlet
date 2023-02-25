@@ -8,7 +8,7 @@
 <body>
     <form action="controladora">
         <input name="cadastrar" type="submit" value="Cadastrar">
-        <input name="acao" type="hidden" value="AdicionaDespesa">
+        <input name="acao" type="hidden" value="PaginaCadastrar">
     </form>
     <form action="controladora">
         <input name="listar" type="submit" value="Listar">

@@ -7,9 +7,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-public class MostraMenu implements Acao{
+public class PaginaCadastrar implements Acao{
     @Override
     public RequestDispatcher executar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        return req.getRequestDispatcher("/index.jsp");
+        return req.getRequestDispatcher("/cadastrar.jsp");
     }
 }

@@ -1,6 +1,7 @@
 package servlet;
 
 import acoes.Acao;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,13 +21,10 @@ public class ControladoraServlet extends HttpServlet {
             System.out.println(acao);
             Class<?> classe = Class.forName("acoes." + acao);
             Acao action = (Acao) classe.newInstance();
-            action.executa(req, resp);
+            action.executar(req, resp).forward(req, resp);
         } catch (Exception e){
             e.printStackTrace();
         }
-
-
-
 
 
 

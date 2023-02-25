@@ -1,5 +1,6 @@
 package acoes;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,9 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 public class AdicionaDespesa implements Acao {
     @Override
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/cadastrar.jsp").forward(req, resp);
+    public RequestDispatcher executar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         DespesaRepository despesaRepository = DespesaRepository.despesaRepository;
         String descricao = req.getParameter("descricao");
@@ -31,14 +30,14 @@ public class AdicionaDespesa implements Acao {
         long id = despesaRepository.getUtimoId() + 1;
         Despesa despesa = new Despesa(id, descricao, data, valor, categoria);
         despesaRepository.salvarDespesa(despesa);
-        req.getRequestDispatcher("/cadastrar.jsp").include(req, resp);
 
-        /*String mensagem = "Despesa de %s no valor de %s foi cadastrada com sucesso"
+        String mensagem = "Despesa de %s no valor de %s foi cadastrada com sucesso"
                 .formatted(despesa.getDescricao(), despesa.getValor());
 
         req.setAttribute("mensagem", mensagem);
         resp.setHeader("mensagem", mensagem);
-        req.getRequestDispatcher("/cadastrar.jsp").forward(req, resp);*/
+
+        return req.getRequestDispatcher("/cadastrar.jsp");
 
     }
 }

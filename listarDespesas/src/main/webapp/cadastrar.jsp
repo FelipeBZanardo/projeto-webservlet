@@ -29,5 +29,6 @@
   <input name="voltar" type="submit" value="Voltar">
   <input name="acao" type="hidden" value="MostraMenu">
 </form>
+<h1>${mensagem}</h1>
 </body>
 </html>
