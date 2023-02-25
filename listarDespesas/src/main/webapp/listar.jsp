@@ -42,13 +42,14 @@
         <td><%=despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
         <td><%=despesa.getValor()%></td>
         <td><%=despesa.getCategoria()%></td>
-        <td><a href="/listarDespesas_war_exploded/removerDespesa?id=<%=despesa.getId()%>">Remover</a></td>
+        <td><a href="/listarDespesas_war_exploded/controladora?acao=RemoveDespesa&id=<%=despesa.getId()%>">Remover</a></td>
       </tr>
     <%
       }
     %>
     </table>
       <input name="voltar" type="submit" value="Voltar">
+        <input name="acao" type="hidden" value="MostraMenu">
     </form>
 
 </body>

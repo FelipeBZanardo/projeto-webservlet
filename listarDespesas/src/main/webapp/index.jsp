@@ -6,9 +6,13 @@
     <title>Cadastrar Despesa</title>
 </head>
 <body>
-    <form action="controladora" method="POST">
+    <form action="controladora">
         <input name="cadastrar" type="submit" value="Cadastrar">
+        <input name="acao" type="hidden" value="AdicionaDespesa">
+    </form>
+    <form action="controladora">
         <input name="listar" type="submit" value="Listar">
+        <input name="acao" type="hidden" value="ListaDespesa">
     </form>
 
 </body>

@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -56,12 +57,13 @@ public class DespesaRepository implements Repository, Serializable {
     @Override
     public void deletarDespesa(long id) throws IOException {
         despesas.remove(id);
+        System.out.println(despesas);
         atualizarArquivo();
-
     }
 
-    private void atualizarArquivo(){
-        despesaRepository.buscarDespesas()
+    private void atualizarArquivo() throws IOException {
+        Files.writeString(path, "");
+        despesas.values()
                 .stream()
                 .map(despesa -> {
                     String id = despesa.getId().toString();
@@ -70,10 +72,10 @@ public class DespesaRepository implements Repository, Serializable {
                     String valor = despesa.getValor().toString();
                     String categoria = despesa.getCategoria().name();
                     return id + ";" + descricao + ";" +
-                            data + ";" + valor + ";" + categoria;})
+                            data + ";" + valor + ";" + categoria + "\n";})
                 .forEach(linha -> {
                     try {
-                        Files.writeString(path, linha);
+                        Files.writeString(path, linha, StandardOpenOption.APPEND);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

@@ -1,8 +1,6 @@
-package servlet;
+package acoes;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Categoria;
@@ -15,18 +13,11 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(urlPatterns = "/cadastrarDespesa")
-public class CadastrarDespesa extends HttpServlet {
+public class AdicionaDespesa implements Acao {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        resp.setContentType("text/html");
+    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        var enviar = req.getParameter("enviar");
-        var voltar = req.getParameter("voltar");
-
-        if(voltar != null)
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/cadastrar.jsp").forward(req, resp);
 
         DespesaRepository despesaRepository = DespesaRepository.despesaRepository;
         String descricao = req.getParameter("descricao");
@@ -41,10 +32,13 @@ public class CadastrarDespesa extends HttpServlet {
         Despesa despesa = new Despesa(id, descricao, data, valor, categoria);
         despesaRepository.salvarDespesa(despesa);
         req.getRequestDispatcher("/cadastrar.jsp").include(req, resp);
-        out.println("<h2>Despesa de %s no valor de %s foi cadastrada com sucesso</h2>"
-                .formatted(despesa.getDescricao(), despesa.getValor()));
 
-        System.out.println(despesaRepository.buscarDespesas());
+        /*String mensagem = "Despesa de %s no valor de %s foi cadastrada com sucesso"
+                .formatted(despesa.getDescricao(), despesa.getValor());
+
+        req.setAttribute("mensagem", mensagem);
+        resp.setHeader("mensagem", mensagem);
+        req.getRequestDispatcher("/cadastrar.jsp").forward(req, resp);*/
 
     }
 }

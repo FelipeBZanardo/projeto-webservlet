@@ -6,7 +6,7 @@
   <title>Cadastrar Despesa</title>
 </head>
 <body>
-<form action="cadastrarDespesa" method="POST">
+<form action="controladora" method="POST">
   Descrição: <input name="descricao" type="text"><br>
   Data: <input name="data" type="text"><br>
   Valor: R$<input name="valor" type="text"><br>
@@ -23,7 +23,11 @@
   </select>
   <br>
   <input name="enviar" type="submit" value="Enviar">
+  <input name="acao" type="hidden" value="AdicionaDespesa">
+</form>
+<form action="controladora">
   <input name="voltar" type="submit" value="Voltar">
+  <input name="acao" type="hidden" value="MostraMenu">
 </form>
 </body>
 </html>
