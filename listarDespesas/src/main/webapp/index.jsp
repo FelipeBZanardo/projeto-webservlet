@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cadastrar Despesa</title>
+    <title>Controle de Despesas</title>
 </head>
 <body>
     <form action="controladora">

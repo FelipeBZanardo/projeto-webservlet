@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
 public class DespesaRepository implements Repository, Serializable {
 
     private final Map<Long, Despesa> despesas;
-    private final Path path = Path.of("C:\\Users\\felip\\OneDrive\\Área de Trabalho\\Projeto WebServlet\\listarDespesas\\banco_dados.csv");
+    private final Path path = Path.of("banco_dados.csv");
+    //private final Path path = Path.of("C:\\Users\\felip\\OneDrive\\Área de Trabalho\\Projeto WebServlet\\listarDespesas\\banco_dados.csv");
     public static DespesaRepository despesaRepository = getInstance();
 
     private DespesaRepository() {

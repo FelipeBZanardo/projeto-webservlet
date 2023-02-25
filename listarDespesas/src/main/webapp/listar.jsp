@@ -5,6 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>Lista de Despesas</title>
   <style>
     table {
       font-family: arial, sans-serif;
@@ -42,7 +43,7 @@
         <td><%=despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
         <td><%=despesa.getValor()%></td>
         <td><%=despesa.getCategoria()%></td>
-        <td><a href="/listarDespesas_war_exploded/controladora?acao=RemoveDespesa&id=<%=despesa.getId()%>">Remover</a></td>
+        <td><a href="/Despesas/controladora?acao=RemoveDespesa&id=<%=despesa.getId()%>">Remover</a></td>
       </tr>
     <%
       }
