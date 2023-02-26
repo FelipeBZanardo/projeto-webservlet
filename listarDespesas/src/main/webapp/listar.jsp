@@ -1,8 +1,6 @@
-<%@ page import="persistence.DespesaRepository" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Despesa" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Lista de Despesas</title>
@@ -33,21 +31,15 @@
         <th>Valor(R$)</th>
         <th>Categoria</th>
       </tr>
-    <%
-      DespesaRepository despesaRepository = DespesaRepository.despesaRepository;
-      List<Despesa> despesas = despesaRepository.buscarDespesas();
-      for (Despesa despesa : despesas) {
-    %>
-      <tr>
-        <td><%=despesa.getDescricao()%></td>
-        <td><%=despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
-        <td><%=despesa.getValor()%></td>
-        <td><%=despesa.getCategoria()%></td>
-        <td><a href="/Despesas/controladora?acao=RemoveDespesa&id=<%=despesa.getId()%>">Remover</a></td>
-      </tr>
-    <%
-      }
-    %>
+        <c:forEach var="despesa" items="${despesas}">
+            <tr>
+                <td>${despesa.getDescricao()}</td>
+                <td>${despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}</td>
+                <td>${despesa.getValor()}</td>
+                <td>${despesa.getCategoria()}</td>
+                <td><a href="/Despesas/controladora?acao=RemoveDespesa&id=${despesa.getId()}">Remover</a></td>
+            </tr>
+        </c:forEach>
     </table>
       <input name="voltar" type="submit" value="Voltar">
         <input name="acao" type="hidden" value="MostraMenu">
