@@ -25,7 +25,7 @@
   <input name="enviar" type="submit" value="Enviar">
   <input name="acao" type="hidden" value="AdicionaDespesa">
 </form>
-<form action="controladora">
+<form action="index.jsp">
   <input name="voltar" type="submit" value="Voltar">
   <input name="acao" type="hidden" value="MostraMenu">
 </form>

@@ -6,7 +6,7 @@
     <title>Controle de Despesas</title>
 </head>
 <body>
-    <form action="controladora">
+    <form action="cadastrar.jsp">
         <input name="cadastrar" type="submit" value="Cadastrar">
         <input name="acao" type="hidden" value="PaginaCadastrar">
     </form>

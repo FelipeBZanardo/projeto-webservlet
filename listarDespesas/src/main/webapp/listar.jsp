@@ -25,7 +25,7 @@
   </style>
 </head>
 <body>
-    <form action="controladora" method="POST">
+    <form action="index.jsp">
     <table>
       <tr>
         <th>Descrição</th>
