@@ -1,6 +1,7 @@
-<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="persistence.DespesaRepository" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Lista de Despesas</title>
@@ -23,7 +24,7 @@
   </style>
 </head>
 <body>
-    <form action="controladora" method="POST">
+    <form action="index.jsp" method="POST">
     <table>
       <tr>
         <th>Descrição</th>
@@ -31,18 +32,18 @@
         <th>Valor(R$)</th>
         <th>Categoria</th>
       </tr>
-        <c:forEach var="despesa" items="${despesas}">
+        <c:forEach var="despesa" items="${DespesaRepository.despesaRepository.buscarDespesas()}">
             <tr>
                 <td>${despesa.getDescricao()}</td>
-                <td>${despesa.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}</td>
-                <td>${despesa.getValor()}</td>
+                <td><fmt:parseDate value="${despesa.getData()}" pattern="yyyy-MM-dd" var="data" type="date"/>
+                <fmt:formatDate value="${data}" type="date" pattern="dd/MM/yyyy"/></td>
+                <td><fmt:formatNumber value="${despesa.getValor()}" minFractionDigits="2" type="currency" currencySymbol="R$"/></td>
                 <td>${despesa.getCategoria()}</td>
                 <td><a href="/Despesas/controladora?acao=RemoveDespesa&id=${despesa.getId()}">Remover</a></td>
             </tr>
         </c:forEach>
     </table>
       <input name="voltar" type="submit" value="Voltar">
-        <input name="acao" type="hidden" value="MostraMenu">
     </form>
 
 </body>
